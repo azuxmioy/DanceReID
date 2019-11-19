@@ -19,7 +19,7 @@ pip3 install torch Pillow opencv-python tqdm numpy
 
 Download the selected youtube videos using the following command:
 ```shell
-bash run.sh /path/to/output/folder /path/to/csvfile
+bash run.sh /path/to/video_folder video_data.csv
 ```
 
 ### DanceReID dataset generation
@@ -27,7 +27,8 @@ bash run.sh /path/to/output/folder /path/to/csvfile
 Generate image-based dataset for re-ID using the following script:
 ```shell
 python3 gen_DanceReID.py -i /path/to/video_folder -n /path/to/npy_folder 
-        -a /path/to/json_file [ -o /path/to/DanceReID ] [ -gs ] [ --split-folder ]
+        -a /path/to/annotation_json [ -o /path/to/output_folder ] [ -gs ] 
+        [ --split-folder ]
 ```
 
 The resulting dataset folder should have the structure as below:
