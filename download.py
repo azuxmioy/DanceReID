@@ -22,7 +22,7 @@ def get_video_list(video_path, csv_file):
             for column, value in row.items():
                 result.setdefault(column,[]).append(value)
 
-    all_vids = result['File_name']
+    all_vids = result['Youtube_id']
 
     non_existing_videos = []
 
@@ -49,9 +49,9 @@ def main(args):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='to download videos for ReID')
 
-    parser.add_argument('-o', "--output_path", type=str, help="Path of the output video folder")
-    parser.add_argument('-c', "--csv_file", help="Location of the csv file (video list)")
-    parser.add_argument('-t', "--tmp_file", help="Output script location.")
+    parser.add_argument('-o', "--output_path", type=str, default='videos', help="Path of the output video folder")
+    parser.add_argument('-c', "--csv_file", default='video_data.csv', help="Location of the csv file (video list)")
+    parser.add_argument('-t', "--tmp_file", default='tmp.sh', help="Output script location.")
     
     main(parser.parse_args())
 

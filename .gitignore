@@ -1,4 +1,6 @@
 .DS_Store
 __pycache__
 __MACOSX
-
+DanceReID/*
+videos/*
+tmp.sh
