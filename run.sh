@@ -4,6 +4,10 @@ VIDEOPATH=$1
 CSV_FILE=$2
 TEMP_FILE="tmp.sh"
 
+if ! [ -d $VIDEOPATH ]; then
+    mkdir $VIDEOPATH
+fi
+
 if [ -d $VIDEOPATH ]; then
     python3 download.py -o $VIDEOPATH -c $CSV_FILE -t $TEMP_FILE
     if [ -f $TEMP_FILE ]; then
