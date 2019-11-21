@@ -2,7 +2,7 @@ import os
 from tqdm import tqdm
 from collections import defaultdict 
 import cv2
-
+import h5py
 import logging
 from logging.config import dictConfig
 
@@ -25,12 +25,6 @@ dict_config_log = {
             'level': 'DEBUG',
             'class': 'logging.StreamHandler',
             'formatter': 'standard',
-        },
-        'file': {
-            'filename': 'log.log',
-            'level': 'INFO',
-            'class': 'logging.FileHandler',
-            'formatter': 'standard',
         }
     },
     'loggers': {
@@ -42,10 +36,11 @@ dict_config_log = {
     },
     'root': {
         'level': 'DEBUG',
-        'handlers': ['console', 'file'],
+        'handlers': ['console'],
         'propagate': False
     }
 }
+dt = h5py.special_dtype(vlen=np.uint8)
 
 logger = logging.getLogger(__name__)
 dictConfig(dict_config_log)
@@ -64,7 +59,7 @@ DICT_POSE_COCO['point_col'] = [
 DICT_POSE_COCO['acc_idx'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)
 DICT_POSE_COCO['flip_ref'] = ((2, 3), (4, 5), (6, 7), (8, 9), (10, 11), (12, 13), (14, 15), (16, 17))
 
-def gen_video_detections (args, video_path, save_path, video_name, dict_track, valids, global_pid, output_height = 256, output_width = 128):
+def gen_video_detections (args, video_path, save_path, video_name, dict_track, valids, outfile, global_pid, output_height = 256, output_width = 128):
 
     input_cap = cv2.VideoCapture(video_path)
     num_frames = int(input_cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -102,9 +97,12 @@ def gen_video_detections (args, video_path, save_path, video_name, dict_track, v
             filename += '_%06d' % frame_idx
 
             if args.split_folder:
-                id_dict[pid].extend( [video_name + '/' + filename + '.jpg'])
+                meta_name = video_name + '/' + filename + '.jpg'
             else: 
-                id_dict[pid].extend( [filename + '.jpg'])
+                meta_name = filename + '.jpg'
+
+            id_dict[pid].extend( [meta_name])
+
 
             if not os.path.isfile(os.path.join(save_path[0], filename+'.txt')) or not args.no_duplicate:
                 np.savetxt(os.path.join(save_path[0], filename+'.txt'), shift_pose, fmt="%s")
@@ -116,6 +114,23 @@ def gen_video_detections (args, video_path, save_path, video_name, dict_track, v
                 if not os.path.isfile(os.path.join(save_path[2], filename+'.jpg')) or not args.no_duplicate:
                     render_img = draw_pose_cv2(image_pil, shift_pose, pid)
                     render_img.save(os.path.join(save_path[2], filename+'.jpg'),'JPEG')
+            
+            if args.h5:
+                jpg = open(os.path.join(save_path[1], filename+'.jpg'), 'rb')
+                binary_data = jpg.read()
+                dset = outfile.create_dataset( 'dataset/images/' + filename, shape= (1,), chunks=True, dtype=dt )
+                dset[0] = np.frombuffer(binary_data, dtype=np.uint8)
+                jpg.close()
+
+                dset = outfile.create_dataset( 'dataset/poses/' + filename, data=shift_pose )
+
+                if args.gen_skeleton:
+                    jpg = open(os.path.join(save_path[2], filename+'.jpg'),'rb')
+                    binary_data = jpg.read()
+                    dset = outfile.create_dataset( 'dataset/skeleton/' + filename, shape= (1,), chunks=True, dtype=dt )
+                    dset[0] = np.frombuffer(binary_data, dtype=np.uint8)
+                    jpg.close()
+                  
 
     logger.info('Complete to read {0} frames by {1}'.format(num_frames, time()-start_time))
 

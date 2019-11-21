@@ -4,6 +4,7 @@ from collections import defaultdict
 import re
 import json
 import logging
+import h5py
 
 import numpy as np
 from util import  gen_video_detections
@@ -15,6 +16,14 @@ def main(args):
     video_list=[]
     if not os.path.exists(args.output_path):
         os.makedirs(args.output_path)
+    
+    outfile=None
+    if args.h5:
+        outfile_path = os.path.join(args.output_path, 'DanceReID.h5')
+        outfile = h5py.File(outfile_path, 'w')
+
+
+
     global_pid = 0
     vid = 0
     count_list = []
@@ -62,6 +71,12 @@ def main(args):
 
         save_path = [pose_savepath, image_savepath, skeleton_savepath]
 
+        logger.info("Read video in {0}".format(video_path))
+        logger.info("Read dict track in {0}".format(npy_path))
+
+
+        dict_track = np.load(npy_path, allow_pickle=True).item()
+
         if not os.path.exists(pose_savepath):
             os.makedirs(pose_savepath)
         if not os.path.exists(image_savepath):
@@ -69,14 +84,7 @@ def main(args):
         if args.gen_skeleton and not os.path.exists(skeleton_savepath):
             os.makedirs(skeleton_savepath)
 
-
-        logger.info("Read video in {0}".format(video_path))
-        logger.info("Read dict track in {0}".format(npy_path))
-
-
-        dict_track = np.load(npy_path, allow_pickle=True).item()
-
-        id_dict = gen_video_detections(args, video_path, save_path, folder_name, dict_track, valid_frames, global_pid)
+        id_dict = gen_video_detections(args, video_path, save_path, folder_name, dict_track, valid_frames, outfile, global_pid)
 
         video_detections_cnt = 0
         for pid in sorted(id_dict):
@@ -115,6 +123,8 @@ if __name__ == '__main__':
     parser.add_argument('-o', '--output-path', type=str, default='DanceReiD/')
     parser.add_argument('-nd', '--no-duplicate', action='store_true', help='not overwrite images if exist')
     parser.add_argument('-gs', '--gen-skeleton', action='store_true', help='generate skeleton rendering')
+    parser.add_argument('-h5', action='store_true', help='generate a single h5 files')
+
     parser.add_argument('--split-folder', action='store_true', help='separate image files for different videos')
 
 

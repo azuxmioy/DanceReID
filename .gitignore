@@ -5,3 +5,4 @@ DanceReID/
 videos/
 npy/*.npy
 tmp.sh
+log*

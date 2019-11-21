@@ -28,7 +28,7 @@ Generate image-based dataset for re-ID using the following script:
 ```shell
 python3 gen_DanceReID.py -i /path/to/video_folder -n /path/to/npy_folder 
         -a /path/to/annotation_json [ -o /path/to/output_folder ] [ -gs ] 
-        [ --split-folder ]
+        [ --split-folder ] [ -h5 ]
 ```
 
 The resulting dataset folder should have the structure as below:
@@ -38,11 +38,12 @@ path/to/your/DanceReID/
 |   |-- video_folders/ 
 |-- poses/......................( if using --split-folder flag)
 |   |-- video_folders/ 
---  skeleton/ ..................( if using -gs flag)
+|--  skeleton/ .................( if using -gs flag)
 |   |-- video_folders/ .........( if using --split-folder flag)
 |-- splits.json 
 |-- meta.json
 |-- video.json
+|-- DanceReID.h5 ...............( generated if using -h5 flag)
 ```
 Note that if you did not apply the --split-folder flag when generating data, there will be no separated video folders.
 
