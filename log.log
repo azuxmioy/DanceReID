@@ -1,0 +1,38 @@
+2019-11-21 12:10:27 - [INFO][gen_DanceReID.main:33] list of videos: ['ZhuDSdmby8k', 'FvfBGRSycQQ', 'T4vr8mA4hoY', 'v2l473JQhqk', 'Js76pyw4UDk', 'O0Y5ewoMOjU', 'LuidpS7an4w', 'ON6GQ7lUZBM', '0wWUeDP0s3s', 'FTSl3VWnCaU', 'qz2311gT1y4', '3iNoS5utYL4', 'A0mfE8pBLqg', '9xzijWeTVUU', 'N64zW8iDe9I', 'EFVCxU49bWM', 't463QgtOo-c', 'E--IWzJznxo', '2VXNmordDVI', 'Nrj7gbVXIgw', '5uKZrONvOVo', 'B3syPoisQMU', 'geCuvmxY2ms', '1hl-3HrwMw4', 'UDJPTG5IQVM', 'T8Q07fcsVwA', 'PKYkZ-rhg5o', 'trftzcE6kXA', '3yt0oDhW6uM', 'vm--8m-dKvE', 'PuHH5-AN4UY', 'eHKbHoPX9d8', '7jRvxkYuYvk']
+2019-11-21 12:10:27 - [INFO][gen_DanceReID.main:74] Read video in videos/000_ZhuDSdmby8k.mp4
+2019-11-21 12:10:27 - [INFO][gen_DanceReID.main:75] Read dict track in npy/333_01_ZhuDSdmby8k_matching.npy
+2019-11-21 12:10:27 - [INFO][util.gen_video_detections:76] Start to read frames from videos/000_ZhuDSdmby8k.mp4
+2019-11-21 12:11:53 - [INFO][util.gen_video_detections:120] Complete to read 5983 frames by 85.47323799133301
+2019-11-21 12:11:53 - [INFO][gen_DanceReID.main:87] Total 24066 detections are generated
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] FvfBGRSycQQ mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] T4vr8mA4hoY mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] v2l473JQhqk mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] Js76pyw4UDk mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] O0Y5ewoMOjU mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] LuidpS7an4w mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] ON6GQ7lUZBM mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 0wWUeDP0s3s mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] FTSl3VWnCaU mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] qz2311gT1y4 mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 3iNoS5utYL4 mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] A0mfE8pBLqg mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 9xzijWeTVUU mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] N64zW8iDe9I mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] EFVCxU49bWM mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] t463QgtOo-c mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] E--IWzJznxo mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 2VXNmordDVI mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] Nrj7gbVXIgw mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 5uKZrONvOVo mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] B3syPoisQMU mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] geCuvmxY2ms mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 1hl-3HrwMw4 mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] UDJPTG5IQVM mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] T8Q07fcsVwA mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] PKYkZ-rhg5o mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] trftzcE6kXA mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 3yt0oDhW6uM mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] vm--8m-dKvE mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] PuHH5-AN4UY mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] eHKbHoPX9d8 mp4 file not fould
+2019-11-21 12:11:53 - [WARNING][gen_DanceReID.main:39] 7jRvxkYuYvk mp4 file not fould

@@ -1,14 +1,12 @@
 import os
 import argparse
-from tqdm import tqdm
 from collections import defaultdict 
 import re
 import json
 import logging
 
 import numpy as np
-from util import parse_dict_track, draw_pose_cv2, gen_video_detections
-from dataset.video_dataset import VideoDataset
+from util import  gen_video_detections
 
 logger = logging.getLogger()
 
@@ -109,15 +107,15 @@ def main(args):
         json.dump(video_id_dict, fp)
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='generating image-based reid dataset for videos')
+    parser = argparse.ArgumentParser(description='generating image-based reid dataset from videos')
 
-    parser.add_argument('-i', '--input-path', type=str)
-    parser.add_argument('-n', '--npy-path', type=str)
-    parser.add_argument('-a', '--annotation', type=str)
+    parser.add_argument('-i', '--input-path', type=str, help='folder path of downloaded videos')
+    parser.add_argument('-n', '--npy-path', type=str, help='folder path of raw detection files')
+    parser.add_argument('-a', '--annotation', type=str, help='path to human labeled json file')
     parser.add_argument('-o', '--output-path', type=str, default='DanceReiD/')
-    parser.add_argument('-nd', '--no-duplicate', type=bool, nargs='?', const=True, default=False)
-    parser.add_argument('-gs', '--gen-skeleton', type=bool, nargs='?', const=True, default=False)
-    parser.add_argument('--split-folder', type=bool, nargs='?', const=True, default=False)
+    parser.add_argument('-nd', '--no-duplicate', action='store_true', help='not overwrite images if exist')
+    parser.add_argument('-gs', '--gen-skeleton', action='store_true', help='generate skeleton rendering')
+    parser.add_argument('--split-folder', action='store_true', help='separate image files for different videos')
 
 
     main(parser.parse_args())
