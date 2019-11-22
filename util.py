@@ -150,25 +150,27 @@ def cropBox(img, pose, ul, br, resH, resW):
     new_br = [min (im_H-1, int(center[0] + lenH / 2)), min (im_W-1, int(center[1] + lenW / 2))]
 
     if new_ul[0] == 0:
-        new_br[0] = lenH
+        new_br[0] = min(lenH, im_H-1)
     elif new_br[0] == im_H-1:
-        new_ul[0] = im_H-lenH
+        new_ul[0] = max(im_H-lenH, 0)
 
     if new_ul[1] == 0:
-        new_br[1] = lenW
+        new_br[1] = min(lenW, im_W-1)
     elif new_br[1] == im_W-1:
-        new_ul[1] = im_W-lenW
+        new_ul[1] = max(im_W-lenW, 0)
 
 
     center = [(new_br[0] + new_ul[0]) / 2, (new_br[1] + new_ul[1]) / 2]
 
     newImg = img[int(new_ul[0]) : int(new_br[0]), int(new_ul[1]) : int(new_br[1])].copy()
 
-    factor = float(resH) / lenH
+    factor_h = float(resH) / float(newImg.shape[0])
+    factor_w = float(resW) / float(newImg.shape[1])
+
     newImg = cv2.resize(newImg, ( int(resW), int(resH) ) )
 
     shift_pose = pose - np.array([center[1], center[0]])
-    shift_pose = shift_pose * factor + np.array([resW/2, resH/2])
+    shift_pose = shift_pose * np.array([factor_h, factor_w]) + np.array([resW/2, resH/2])
 
     return newImg, shift_pose
 

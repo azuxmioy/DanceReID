@@ -12,7 +12,7 @@ pip3 install torch Pillow opencv-python tqdm numpy
 
 ### Download raw bounding boxes detections and human pose landmarks npy files
 
-[Google drive](https://drive.google.com/file/d/1f9sIqxr0XqAIRzTQDLzd2JrR26xpQBxF/view?usp=sharing) (306MB)
+[Google drive](https://drive.google.com/file/d/1qSh78lGQ6b7bZsg8K3tG1SIWaVSjoUrc/view?usp=sharing) (237MB)
 
 
 ### Video crawler
