@@ -59,7 +59,7 @@ DICT_POSE_COCO['point_col'] = [
 DICT_POSE_COCO['acc_idx'] = (1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17)
 DICT_POSE_COCO['flip_ref'] = ((2, 3), (4, 5), (6, 7), (8, 9), (10, 11), (12, 13), (14, 15), (16, 17))
 
-def gen_video_detections (args, video_path, save_path, video_name, dict_track, valids, outfile, global_pid, output_height = 256, output_width = 128):
+def gen_video_detections (args, video_path, save_path, video_name, dict_track, valids, outfile, global_pid, downsample, output_height = 256, output_width = 128):
 
     input_cap = cv2.VideoCapture(video_path)
     num_frames = int(input_cap.get(cv2.CAP_PROP_FRAME_COUNT))
@@ -78,6 +78,8 @@ def gen_video_detections (args, video_path, save_path, video_name, dict_track, v
             logger.error(e)
             logger.error('Error occurs at {0}'.format(frame_idx))
             logger.error('Image: {0}'.format(image))
+
+        if not frame_idx % downsample == 0: continue
 
         for bid, dict_pose in dict_poses.items():
 

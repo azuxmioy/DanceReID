@@ -27,7 +27,7 @@ bash run.sh /path/to/video_folder video_data.csv
 Generate image-based dataset for re-ID using the following script:
 ```shell
 python3 gen_DanceReID.py -i /path/to/video_folder -n /path/to/npy_folder 
-        -a /path/to/annotation_json [ -o /path/to/output_folder ] [ -gs ] 
+        -a /path/to/annotation_json -d 5 [ -o /path/to/output_folder ] [ -gs ] 
         [ --split-folder ] [ -h5 ]
 ```
 

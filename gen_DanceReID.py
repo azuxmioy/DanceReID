@@ -84,7 +84,7 @@ def main(args):
         if args.gen_skeleton and not os.path.exists(skeleton_savepath):
             os.makedirs(skeleton_savepath)
 
-        id_dict = gen_video_detections(args, video_path, save_path, folder_name, dict_track, valid_frames, outfile, global_pid)
+        id_dict = gen_video_detections(args, video_path, save_path, folder_name, dict_track, valid_frames, outfile, global_pid, args.down_sample)
 
         video_detections_cnt = 0
         for pid in sorted(id_dict):
@@ -121,6 +121,8 @@ if __name__ == '__main__':
     parser.add_argument('-n', '--npy-path', type=str, help='folder path of raw detection files')
     parser.add_argument('-a', '--annotation', type=str, help='path to human labeled json file')
     parser.add_argument('-o', '--output-path', type=str, default='DanceReiD/')
+    parser.add_argument('-d', '--down-sample', type=int, default=1)
+
     parser.add_argument('-nd', '--no-duplicate', action='store_true', help='not overwrite images if exist')
     parser.add_argument('-gs', '--gen-skeleton', action='store_true', help='generate skeleton rendering')
     parser.add_argument('-h5', action='store_true', help='generate a single h5 files')
