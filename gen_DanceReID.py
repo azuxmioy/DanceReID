@@ -1,6 +1,6 @@
 import os
 import argparse
-from collections import defaultdict 
+from collections import defaultdict, OrderedDict
 import re
 import json
 import logging
@@ -34,7 +34,7 @@ def main(args):
     annotation = None
     if args.annotation is not None:
         with open(args.annotation) as pf:
-            annotation = json.load(pf)
+            annotation = json.load(pf, object_pairs_hook=OrderedDict)
 
     video_list= [f for f in annotation]
 
