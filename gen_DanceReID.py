@@ -105,12 +105,19 @@ def main(args):
     meta_dict ['n_detects'] = count_list
     meta_dict ['total_detects'] = sum(count_list)
 
+    split_dict = {}
+
+    split_dict ['trainval'] = list(range(17,88))
+    split_dict ['query'] = [0,1,2,3,4,5,6,7,8,9,10,
+                               11,12,13,14,15,16,88,89,90,
+                               91,92,93,94,95,96,97,98,99]
+    split_dict ['gallery'] = split_dict ['query']
 
 
     with open(os.path.join(args.output_path, 'meta.json'), 'w') as fp:
         json.dump(meta_dict, fp)
-    #with open(os.path.join(args.output_path, 'split.json'), 'w') as fp:
-    #    json.dump(split_dict, fp)
+    with open(os.path.join(args.output_path, 'split.json'), 'w') as fp:
+        json.dump([split_dict], fp)
     with open(os.path.join(args.output_path, 'video.json'), 'w') as fp:
         json.dump(video_id_dict, fp)
 
