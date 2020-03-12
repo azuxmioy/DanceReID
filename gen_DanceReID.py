@@ -109,7 +109,7 @@ def main(args):
 
     split_dict ['trainval'] = list(range(17,88))
     split_dict ['query'] = [0,1,2,3,4,5,6,7,8,9,10,
-                               11,12,13,14,15,16,88,89,90,
+                               11,35,36,37,38,39,88,89,90,
                                91,92,93,94,95,96,97,98,99]
     split_dict ['gallery'] = split_dict ['query']
 
