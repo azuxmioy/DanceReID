@@ -70,12 +70,12 @@ In our paper, we downsample the videos every 5 frames(using the tag -d 5) for ev
 
 | subset   | # ids |# images| # videos |
 | -------- | ------| ------ |  ------  | 
-| trainval |   71  |  41242 |    15   | 
-| test     |   29  |  21356 |     6    |
+| trainval |   71  |  31643 |    15   | 
+| test     |   29  |  19526 |     6    |
 
 Please find more details for every single video in the csv file. 
 
-**Note:** In our paper, we use only 100 IDs for the experiments. Here we also provides another version of our dataset (total 178 IDs in 33 videos) for further researches, you can download all videos by replacing this csv file.
+**Note:** In our paper, we use only 100 IDs for the experiments. Here we also provides another version of our dataset (total 178 IDs in 33 videos) for further researches, you can download all videos by replacing [this csv file](https://drive.google.com/file/d/1egXS4Wca-LrxExGRG6A3emXMIReh6-ZR/view?usp=sharing).
 
 ### Simple Baseline w/ ResNet-50 backbone
 
@@ -86,4 +86,6 @@ Evaluation metric: **mAP**, **CMC-CUHK03** (single gallery shot)
 | Softmax [[xiao2016]](https://arxiv.org/abs/1604.07528) | 74.4 |  73.1  |  94.7  |
 | Siamese [[chung2017]](http://openaccess.thecvf.com/content_ICCV_2017/papers/Chung_A_Two_Stream_ICCV_2017_paper.pdf)| 77.5 |  75.9  |  96.9  |
 | Triplet [[hermans2017]](https://arxiv.org/abs/1703.07737)| 78.4 |  77.2  |  97.6  |
-| Ours | 86.1 |  84.9  |  98.7  |
+| ST-ReIDNet | 86.1 |  84.9  |  98.7  |
+
+Check our baseline and model implementation in the [ST-ReIDNet](https://github.com/azuxmioy/ST-ReIDNet) repository.
